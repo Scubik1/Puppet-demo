@@ -10,11 +10,9 @@ node slave1.puppet {
     ensure => running,
     enable => true,
   }
-  firewalld_port { 'Open port 80':
-    ensure   => present,
-    port     => 80,
-    protocol => 'tcp',
-  }
+exec {'Add port to firewall':
+  command => 'firewall-cmd --add-port=80/tcp --permanent',
+}
 }
 
 node slave2.puppet {
