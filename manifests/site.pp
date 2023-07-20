@@ -10,10 +10,13 @@ node slave1.puppet {
     ensure => running,
     enable => true,
   }
-exec {'Add port to firewall':
-  path => '/usr/bin',
-  command => 'firewall-cmd --add-port=80/tcp --permanent',
-}
+  exec {'Add port to firewall':
+    path => '/usr/bin',
+    command => 'firewall-cmd --add-port=80/tcp --permanent',
+  }
+  service { 'firewalld':
+    hasrestart => true,
+  }
 }
 
 node slave2.puppet {
