@@ -42,7 +42,8 @@ node slave2.puppet {
     path => '/usr/bin',
     command => 'firewall-cmd --add-port=80/tcp --permanent',
   }
-  service { 'firewalld':
-    ensure => running,
+  exec { 'restart_firewalld':
+    command   => '/usr/bin/systemctl restart firewalld',
+    path      => '/usr/bin',
   }
 }
