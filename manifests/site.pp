@@ -11,6 +11,7 @@ node slave1.puppet {
     enable => true,
   }
 exec {'Add port to firewall':
+  path => '/usr/bin',
   command => 'firewall-cmd --add-port=80/tcp --permanent',
 }
 }
