@@ -10,6 +10,11 @@ node slave1.puppet {
     ensure => running,
     enable => true,
   }
+  firewalld_port { 'Open port 80':
+    ensure   => present,
+    port     => 80,
+    protocol => 'tcp',
+  }
 }
 
 node slave2.puppet {
