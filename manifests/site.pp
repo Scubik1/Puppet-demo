@@ -15,7 +15,7 @@ node slave1.puppet {
     command => 'firewall-cmd --add-port=80/tcp --permanent',
   }
   service { 'firewalld':
-    hasrestart => true,
+    ensure => running,
   }
 }
 
@@ -43,6 +43,6 @@ node slave2.puppet {
     command => 'firewall-cmd --add-port=80/tcp --permanent',
   }
   service { 'firewalld':
-    hasrestart => true,
+    ensure => running,
   }
 }
