@@ -31,10 +31,6 @@ node slave2.puppet {
     ensure => present,
     source => "/vagrant/index.php",
   }
-  service { 'php-fpm':
-    ensure => running,
-    enable => true,
-  }
   service { 'httpd':
     ensure => running,
     enable => true,
